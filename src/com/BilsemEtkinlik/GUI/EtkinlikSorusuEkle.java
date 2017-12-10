@@ -88,6 +88,13 @@ public class EtkinlikSorusuEkle extends javax.swing.JFrame {
         }
         
     }
+    int OgrenciyeAitSoruPuaniniGetir(int ogrenciNo,int soruNo)
+    {
+        int puan=-1;
+        
+        
+        return  puan;
+    }
     
     void SorularTablosuDoldur()
     {

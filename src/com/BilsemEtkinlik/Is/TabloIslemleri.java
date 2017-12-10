@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.JComboBox;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -69,5 +70,23 @@ public class TabloIslemleri
         kombo.addItem(baslik);
         kombo.setSelectedIndex(0);
         
+    }
+    
+    public static void TabloModeliAyarla(JTable tablo,Object[] satir )
+    {
+        TableModel model =new DefaultTableModel(satir, 0)
+        {
+             @Override
+            public boolean isCellEditable(int row, int column) 
+            {
+       //all cells false
+                    if(row==0 || column==0)
+                        return false;
+                    else
+                        return true;
+            }
+        };
+        
+        tablo.setModel(model);
     }
 }

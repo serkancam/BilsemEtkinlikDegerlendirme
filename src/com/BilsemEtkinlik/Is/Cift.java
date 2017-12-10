@@ -19,6 +19,10 @@ public class Cift
         this.key=k;
         this.value=v;
     }
+    public Cift()
+    {
+        
+    }
 
    
 
@@ -26,6 +30,7 @@ public class Cift
     public String toString() 
     {
         return key+"-"+value; //To change body of generated methods, choose Tools | Templates.
+       // return value;
     }
     
     

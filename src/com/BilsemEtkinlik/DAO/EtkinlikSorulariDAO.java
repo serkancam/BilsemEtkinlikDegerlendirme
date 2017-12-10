@@ -20,7 +20,11 @@ public class EtkinlikSorulariDAO extends DAO
 {
     private final String sil = "DELETE FROM [etkinlikSorulari] WHERE [soruId]=?";
     private final String tumListeyiGetir= "SELECT * FROM [etkinlikSorulari] ORDER BY [soruId]";
-    private final String etkinlikIdyeGoreGetir = "SELECT * FROM [etkinlikSorulari] WHERE [etkinlikId]=?";
+    private final String etkinlikIdyeGoreGetir = "SELECT * FROM [etkinlikSorulari] WHERE [etkinlikId]=? order by [soruId] asc";
+    private final String sinifEtkinligiSorulariniGetir="select * from [etkinlikSorulari] as es inner join [etkinlikler] as e "
+            + "on es.[etkinlikId]=e.[etkinlikId] inner join [sinifinEtkinklileri] as se on e.[etkinlikId]=se.[etkinlikId] "
+            + "inner join [sinilar] as s on se.[sinifId]=s.[sinifId] inner join [ogrenciler] as o "
+            + "on s.[sinifId]=o.sinifId where e.[etkinlikId]=? and s.[sinifId]=?";
     private final String ekle = "INSERT INTO [etkinlikSorulari]([etkinlikId],[soru]) VALUES(?,?)";
     private final String guncelle = "UPDATE [etkinlikSorulari] SET [etkinlikId]=?, [soru]=? WHERE [soruId]=?";
     

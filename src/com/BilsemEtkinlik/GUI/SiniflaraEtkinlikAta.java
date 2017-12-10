@@ -108,7 +108,7 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
             
        sinifEtkinlik=islem.EtkinlikIdyeGoreGetir(secilenEtkinlik);
        DefaultTableModel model= (DefaultTableModel) tblEkinlikAtananSiniflar.getModel();
-        for (SinifEtkinlikleri sinifEtk : sinifEtkinlik) 
+       for (SinifEtkinlikleri sinifEtk : sinifEtkinlik) 
         {
             
             model.addRow(new Object[]{false,sinifEtk.getSinif().getSinifId(),sinifEtk.getSinif().getSinifKodu()});
@@ -171,6 +171,16 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tblSiniflar);
+        if (tblSiniflar.getColumnModel().getColumnCount() > 0) {
+            tblSiniflar.getColumnModel().getColumn(0).setResizable(false);
+            tblSiniflar.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tblSiniflar.getColumnModel().getColumn(1).setResizable(false);
+            tblSiniflar.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tblSiniflar.getColumnModel().getColumn(2).setResizable(false);
+            tblSiniflar.getColumnModel().getColumn(2).setPreferredWidth(300);
+            tblSiniflar.getColumnModel().getColumn(3).setResizable(false);
+            tblSiniflar.getColumnModel().getColumn(3).setPreferredWidth(300);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 330, 230));
 

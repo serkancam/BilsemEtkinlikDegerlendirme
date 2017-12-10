@@ -22,6 +22,7 @@ public class OgrencilerDAO extends DAO
 {
     private final String tumListeyiGetir= "select * from [programlar] as p inner join [siniflar] as s on p.[programId]=s.[programId]"
             + " inner join [ogrenciler] as o on s.[sinifId]=o.[sinifId] where s.[sinifId]=3 order by o.[ogrenciNo] asc";
+    private final String sinifOgrencileriniGetir="select * from [ogrenciler] where [sinifId]=? ";
     public List<Ogrenciler> TumListeyiGetir() 
         {
 		Connection conn = null;
@@ -73,5 +74,45 @@ public class OgrencilerDAO extends DAO
 		
 		return list;
 	}
+    
+    
+    public List<Ogrenciler> SinifinOgrencileriniGetir(int sinifId)
+    {
+        Connection conn = null;
+                PreparedStatement stmt = null;
+		
+		List<Ogrenciler> list = new ArrayList<Ogrenciler>();
+		
+		try 
+                {
+			conn = getConnection();                        
+			stmt = conn.prepareStatement(sinifOgrencileriniGetir);                        
+                        stmt.setInt(1,sinifId );
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) 
+                        {
+				
+                            Ogrenciler ogrenci=new Ogrenciler();
+                            ogrenci.setOgrenciNo(rs.getInt("ogrenciNo"));
+                            ogrenci.setOgrenciAdi(rs.getString("ogrenciAdi"));
+                            ogrenci.setOgrenciSoyadi(rs.getString("ogrenciSoyadi"));
+                            list.add(ogrenci);
+                                
+			}
+		}
+                catch (SQLException e) 
+                {
+			// e.printStackTrace();
+			throw new RuntimeException(e);
+		} 
+                finally 
+                {
+			close(stmt);
+			close(conn);
+		}
+		
+		return list;
+    }
     
 }
