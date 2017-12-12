@@ -28,7 +28,8 @@ public class DAO
 {
         
     private static final String DRIVER_NAME = "net.ucanaccess.jdbc.UcanaccessDriver";
-    private static final String DB_URL = "jdbc:ucanaccess://G:\\Calismalar\\msaccess\\Bilsem.accdb";
+    final String yol = System.getProperty("user.dir");
+    final String DB_URL = "jdbc:ucanaccess://"+yol+"\\veritabani\\Bilsem.accdb";
     public Connection getConnection()
     {    
         try {
