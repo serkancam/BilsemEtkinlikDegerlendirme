@@ -164,7 +164,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="10" width="280" height="-1"/>
+          <AbsoluteConstraints x="10" y="10" width="280" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -184,7 +184,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="50" width="280" height="-1"/>
+          <AbsoluteConstraints x="10" y="50" width="280" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -204,7 +204,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="90" width="280" height="-1"/>
+          <AbsoluteConstraints x="10" y="90" width="280" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -237,6 +237,7 @@
     <Component class="javax.swing.JLabel" name="lblBilgi">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x130;&#x15f;lem Bilgisi:"/>
+        <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

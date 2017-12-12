@@ -231,7 +231,7 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
                 cbDerslerActionPerformed(evt);
             }
         });
-        getContentPane().add(cbDersler, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 280, -1));
+        getContentPane().add(cbDersler, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 280, 30));
 
         cbModuller.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Modül Seç" }));
         cbModuller.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +239,7 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
                 cbModullerActionPerformed(evt);
             }
         });
-        getContentPane().add(cbModuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 280, -1));
+        getContentPane().add(cbModuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 280, 30));
 
         cbEtkinlikler.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Etkinlik Seç" }));
         cbEtkinlikler.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +247,7 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
                 cbEtkinliklerActionPerformed(evt);
             }
         });
-        getContentPane().add(cbEtkinlikler, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 280, -1));
+        getContentPane().add(cbEtkinlikler, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 280, 30));
 
         btnEtkinlikAktar.setText("Seçilen sınflara etkinlik aktar");
         btnEtkinlikAktar.addActionListener(new java.awt.event.ActionListener() {
@@ -266,6 +266,7 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
         getContentPane().add(btnEtkinlikKaldir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 220, 30));
 
         lblBilgi.setText("İşlem Bilgisi:");
+        lblBilgi.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(lblBilgi, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 220, 40));
 
         pack();

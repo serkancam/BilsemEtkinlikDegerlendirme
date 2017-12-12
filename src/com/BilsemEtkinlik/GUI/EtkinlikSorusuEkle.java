@@ -182,7 +182,7 @@ public class EtkinlikSorusuEkle extends javax.swing.JFrame {
                 cbDerslerActionPerformed(evt);
             }
         });
-        getContentPane().add(cbDersler, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 31, 154, -1));
+        getContentPane().add(cbDersler, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 31, 154, 30));
 
         cbModuller.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Modül Seç" }));
         cbModuller.addActionListener(new java.awt.event.ActionListener() {
@@ -190,7 +190,7 @@ public class EtkinlikSorusuEkle extends javax.swing.JFrame {
                 cbModullerActionPerformed(evt);
             }
         });
-        getContentPane().add(cbModuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 31, 220, -1));
+        getContentPane().add(cbModuller, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 31, 220, 30));
 
         cbEtkinlikler.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Etkinlik Seç" }));
         cbEtkinlikler.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +198,7 @@ public class EtkinlikSorusuEkle extends javax.swing.JFrame {
                 cbEtkinliklerActionPerformed(evt);
             }
         });
-        getContentPane().add(cbEtkinlikler, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 31, 199, -1));
+        getContentPane().add(cbEtkinlikler, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 31, 199, 30));
 
         jLabel1.setText("Ders Seç");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
