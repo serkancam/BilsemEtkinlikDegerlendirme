@@ -140,6 +140,7 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
         lblBilgi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -217,7 +218,7 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
             tblEkinlikAtananSiniflar.getColumnModel().getColumn(2).setPreferredWidth(500);
         }
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 250, 230));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 240, 230));
 
         jLabel1.setText("Sınıflar");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));

@@ -64,4 +64,72 @@ public class SiniflarDAO extends DAO
 	}
     
     
+    public List<Siniflar> ProgramIdyeGoreGetir(int programId) 
+        {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		List<Siniflar> list = new ArrayList<Siniflar>();
+		
+		try 
+                {
+			conn = getConnection();
+			stmt = conn.prepareStatement(programaGoreGetir);
+                        stmt.setInt(1, programId);
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) 
+                        {
+				Siniflar sinif = new Siniflar();
+                                
+				sinif.setSinifId(rs.getInt("sinifId"));
+				sinif.setSinifKodu(rs.getString("sinifKodu"));
+                                
+                                
+				list.add(sinif);
+			}
+		}
+                catch (SQLException e) 
+                {
+			// e.printStackTrace();
+			throw new RuntimeException(e);
+		} 
+                finally 
+                {
+			close(stmt);
+			close(conn);
+		}
+		
+		return list;
+	}
+    
+    
+    public int SinifEkle(Siniflar sinif)
+    {
+        Connection conn = null;
+            PreparedStatement stmt = null;
+		
+		try 
+                {
+                    conn = getConnection();
+                    stmt = conn.prepareStatement(ekle);
+                    stmt.setString(1, sinif.getSinifKodu());
+                    stmt.setInt(2, sinif.getProgram().getProgramId());
+                    
+                                           
+                    int result = stmt.executeUpdate();	
+                    return result;
+		}
+                catch (SQLException e) 
+                {
+			// e.printStackTrace();
+                    throw new RuntimeException(e);
+		} 
+                finally 
+                {
+                    close(stmt);
+                    close(conn);
+		}
+    }
+    
+    
 }

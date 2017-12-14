@@ -167,6 +167,8 @@ public class EtkinlikSorusuEkle extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblSoruEkle.setShowHorizontalLines(true);
+        tblSoruEkle.setShowVerticalLines(true);
         tblSoruEkle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tblSoruEkleKeyPressed(evt);

@@ -78,7 +78,7 @@ public class GUIDenemeler extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        Cift[] cift={new Cift(0,"sıfır"),new Cift(1,"bir")};
+        Cift2[] cift={new Cift2(0,"sıfır"),new Cift2(1,"bir")};
         
         ComboBoxModel model=new DefaultComboBoxModel(cift);
         jComboBox1.setModel( model);
@@ -86,7 +86,7 @@ public class GUIDenemeler extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        jLabel1.setText(((Cift)jComboBox1.getSelectedItem()).key+"");
+        jLabel1.setText(((Cift2)jComboBox1.getSelectedItem()).key+"");
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
