@@ -28,7 +28,7 @@ import java.sql.Date;
  *
  * @author serkancam
  */
-public class EtkinlikDegerlendir extends javax.swing.JFrame {
+public class EtkinlikDegerlendir extends javax.swing.JInternalFrame {
     int secilenDers=-1,secilenModul=-1,secilenEtkinlik=-1,secilenSinif=-1,etkinklikSoruSayisi=-1;
 
     /**
@@ -213,14 +213,26 @@ public class EtkinlikDegerlendir extends javax.swing.JFrame {
         btnRaporla = new javax.swing.JButton();
         lblRaporlamaBilgi = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1062, 485));
         setMinimumSize(new java.awt.Dimension(1062, 485));
-        setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -233,9 +245,11 @@ public class EtkinlikDegerlendir extends javax.swing.JFrame {
 
             }
         ));
+        tblDegerlendirme.setShowHorizontalLines(true);
+        tblDegerlendirme.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblDegerlendirme);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 175, 1270, 310));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 175, 1270, 280));
 
         pnlSecim.setBackground(new java.awt.Color(204, 204, 255));
         pnlSecim.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -364,11 +378,6 @@ public class EtkinlikDegerlendir extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_cbSiniflarActionPerformed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        DerslerCbDoldur();
-    }//GEN-LAST:event_formWindowOpened
 
     private void btnPuanlariAktarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuanlariAktarActionPerformed
         // TODO add your handling code here:
@@ -608,6 +617,11 @@ public class EtkinlikDegerlendir extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_btnRaporlaActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        // TODO add your handling code here:
+        DerslerCbDoldur();
+    }//GEN-LAST:event_formInternalFrameOpened
 
     /**
      * @param args the command line arguments

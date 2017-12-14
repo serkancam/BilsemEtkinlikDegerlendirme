@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author serkancam
  */
-public class OgrenciEkle extends javax.swing.JFrame {
+public class OgrenciEkle extends javax.swing.JInternalFrame {
     int secilenProgram=-1,secilenSinif=-1;
 
     /**
@@ -109,11 +109,23 @@ public class OgrenciEkle extends javax.swing.JFrame {
         btnOgrencileriSil = new javax.swing.JButton();
         btnOgrenciEkle = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -235,15 +247,6 @@ public class OgrenciEkle extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        
-        ProgramlarCbDoldur();
-        
-        
-        
-    }//GEN-LAST:event_formWindowOpened
-
     private void cbProgramlarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProgramlarActionPerformed
         // TODO add your handling code here:
         cbSiniflar.removeAllItems();
@@ -317,6 +320,11 @@ public class OgrenciEkle extends javax.swing.JFrame {
     private void btnOgrencileriSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOgrencileriSilActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOgrencileriSilActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        // TODO add your handling code here:
+        ProgramlarCbDoldur();
+    }//GEN-LAST:event_formInternalFrameOpened
 
     /**
      * @param args the command line arguments

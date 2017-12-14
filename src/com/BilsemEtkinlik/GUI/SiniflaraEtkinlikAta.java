@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author serkancam
  */
-public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
+public class SiniflaraEtkinlikAta extends javax.swing.JInternalFrame {
     int secilenDers,secilenModul,secilenEtkinlik=-1;
 
     /**
@@ -139,11 +139,23 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
         btnEtkinlikKaldir = new javax.swing.JButton();
         lblBilgi = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -171,6 +183,8 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblSiniflar.setShowHorizontalLines(true);
+        tblSiniflar.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tblSiniflar);
         if (tblSiniflar.getColumnModel().getColumnCount() > 0) {
             tblSiniflar.getColumnModel().getColumn(0).setResizable(false);
@@ -183,7 +197,7 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
             tblSiniflar.getColumnModel().getColumn(3).setPreferredWidth(300);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 330, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 330, 200));
 
         tblEkinlikAtananSiniflar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,6 +222,8 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblEkinlikAtananSiniflar.setShowHorizontalLines(true);
+        tblEkinlikAtananSiniflar.setShowVerticalLines(true);
         jScrollPane2.setViewportView(tblEkinlikAtananSiniflar);
         if (tblEkinlikAtananSiniflar.getColumnModel().getColumnCount() > 0) {
             tblEkinlikAtananSiniflar.getColumnModel().getColumn(0).setResizable(false);
@@ -218,7 +234,7 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
             tblEkinlikAtananSiniflar.getColumnModel().getColumn(2).setPreferredWidth(500);
         }
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 240, 230));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 240, 200));
 
         jLabel1.setText("Sınıflar");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
@@ -312,12 +328,6 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbEtkinliklerActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        SiniflarTablosuDoldur();
-        DerslerCbDoldur();
-    }//GEN-LAST:event_formWindowOpened
-
     private void btnEtkinlikAktarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEtkinlikAktarActionPerformed
         // TODO add your handling code here:
         if(secilenEtkinlik>0)
@@ -403,6 +413,12 @@ public class SiniflaraEtkinlikAta extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_btnEtkinlikKaldirActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        // TODO add your handling code here:
+        SiniflarTablosuDoldur();
+        DerslerCbDoldur();
+    }//GEN-LAST:event_formInternalFrameOpened
 
     /**
      * @param args the command line arguments

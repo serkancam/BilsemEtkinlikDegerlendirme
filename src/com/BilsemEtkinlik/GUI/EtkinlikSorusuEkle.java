@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author serkancam
  */
-public class EtkinlikSorusuEkle extends javax.swing.JFrame {
+public class EtkinlikSorusuEkle extends javax.swing.JInternalFrame {
 
     int secilenDers,secilenModul,secilenEtkinlik=-1;
     /**
@@ -135,11 +135,23 @@ public class EtkinlikSorusuEkle extends javax.swing.JFrame {
         btnSorulariGuncelle = new javax.swing.JButton();
         lblBilgi = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -243,16 +255,6 @@ public class EtkinlikSorusuEkle extends javax.swing.JFrame {
 
      
     
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-       // TabloIslemleri tbl=new TabloIslemleri();
-        int[] b={80,80,800};
-        TabloIslemleri.KolonBoyutuAyarla(tblSoruEkle, b);
-       
-        DerslerCbDoldur();
-       
-    }//GEN-LAST:event_formWindowOpened
-
     private void cbDerslerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDerslerActionPerformed
         // TODO add your handling code here:
         TabloIslemleri.ComboBoxTemizle(cbModuller, "Modül Seç");
@@ -411,6 +413,14 @@ public class EtkinlikSorusuEkle extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnSorulariGuncelleActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        // TODO add your handling code here:
+         int[] b={80,80,800};
+        TabloIslemleri.KolonBoyutuAyarla(tblSoruEkle, b);
+       
+        DerslerCbDoldur();
+    }//GEN-LAST:event_formInternalFrameOpened
 
     /**
      * @param args the command line arguments
