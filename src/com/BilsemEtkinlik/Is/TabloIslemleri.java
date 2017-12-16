@@ -21,6 +21,7 @@ public class TabloIslemleri
     public static void KolonBoyutuAyarla(JTable tablo,int[] boyut)
     {
         TableColumn kolon=null;
+       
         for (int i = 0; i < boyut.length; i++) 
         {
             kolon = tablo.getColumnModel().getColumn(i);

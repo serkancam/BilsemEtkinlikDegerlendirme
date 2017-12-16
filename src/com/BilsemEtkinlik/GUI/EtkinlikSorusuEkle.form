@@ -49,6 +49,7 @@
                 <Column editable="true" title="Soru" type="java.lang.String"/>
               </Table>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Yeni sat&#x131;r eklemek i&#xe7;in &quot;Enter&quot; a bas&#x131;n&#x131;z."/>
             <Property name="showHorizontalLines" type="boolean" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="true" type="code"/>
             </Property>

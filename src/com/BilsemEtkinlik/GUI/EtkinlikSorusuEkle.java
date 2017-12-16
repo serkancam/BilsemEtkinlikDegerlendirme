@@ -179,6 +179,7 @@ public class EtkinlikSorusuEkle extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblSoruEkle.setToolTipText("Yeni satır eklemek için \"Enter\" a basınız.");
         tblSoruEkle.setShowHorizontalLines(true);
         tblSoruEkle.setShowVerticalLines(true);
         tblSoruEkle.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -351,7 +352,7 @@ public class EtkinlikSorusuEkle extends javax.swing.JInternalFrame {
                     
                     et.setEtkinlikId(secilenEtkinlik);
                     soru.setEtkinlik(et);
-                    soru.setSoru(model.getValueAt(i, 2).toString());
+                    soru.setSoru(model.getValueAt(i, 2).toString().trim());
                    
                     sorular.add(soru);
                 }
