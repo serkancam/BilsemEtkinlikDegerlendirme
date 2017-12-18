@@ -37,6 +37,7 @@ public class TabloIslemleri
     public static void TabloTemizle(JTable tablo)
     {
         DefaultTableModel model= (DefaultTableModel) tablo.getModel();
+        
         int rowCount = model.getRowCount();
 //Remove rows one by one from the end of the table
         for (int i = rowCount - 1; i >= 0; i--)

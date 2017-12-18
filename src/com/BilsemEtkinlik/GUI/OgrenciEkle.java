@@ -11,6 +11,7 @@ import com.BilsemEtkinlik.Is.*;
 import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,7 +19,12 @@ import javax.swing.table.DefaultTableModel;
  * @author serkancam
  */
 public class OgrenciEkle extends javax.swing.JInternalFrame {
+     List<Ogrenciler> ogrenciler=null;
     int secilenProgram=-1,secilenSinif=-1;
+    
+    
+    
+    
 
     /**
      * Creates new form OgrenciEkle
@@ -64,21 +70,20 @@ public class OgrenciEkle extends javax.swing.JInternalFrame {
     }
      void OgrencilerTablosuDoldur()
      {
+       ogrenciler=null;
        
-        List<Ogrenciler> ogrenciler=null;
         OgrencilerDAO ogrenciISlem=new OgrencilerDAO();
         ogrenciler=ogrenciISlem.SinifinOgrencileriniGetir(secilenSinif);
         DefaultTableModel model= (DefaultTableModel) tblOgrenciler.getModel();
         if(ogrenciler.size()>0)
         for(Ogrenciler ogrenci:ogrenciler)
         {
-            model.addRow(new Object[]{false,ogrenci.getOgrenciNo(),ogrenci.getOgrenciAdi(),ogrenci.getOgrenciSoyadi()});
+            model.addRow(new Object[]{false,ogrenci.getOgrenciNo(),ogrenci.getOgrenciAdi().trim(),ogrenci.getOgrenciSoyadi().trim()});
         }
         else
         {
-            for(int i=0;i<8;i++)
-            {model.addRow(new Object[]{false,-1,"",""});}
             
+            model.addRow(new Object[]{false,"","",""});           
                       
         }
      }
@@ -160,13 +165,14 @@ public class OgrenciEkle extends javax.swing.JInternalFrame {
             tblOgrenciler.getColumnModel().getColumn(0).setPreferredWidth(70);
             tblOgrenciler.getColumnModel().getColumn(1).setResizable(false);
             tblOgrenciler.getColumnModel().getColumn(1).setPreferredWidth(110);
+            tblOgrenciler.getColumnModel().getColumn(1).setCellEditor(null);
             tblOgrenciler.getColumnModel().getColumn(2).setResizable(false);
             tblOgrenciler.getColumnModel().getColumn(2).setPreferredWidth(200);
             tblOgrenciler.getColumnModel().getColumn(3).setResizable(false);
             tblOgrenciler.getColumnModel().getColumn(3).setPreferredWidth(200);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 171, 680, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 680, 230));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -213,7 +219,7 @@ public class OgrenciEkle extends javax.swing.JInternalFrame {
         lblBilgi.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(lblBilgi, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 70, 158, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 380, 170));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 380, 210));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(280, 170));
@@ -229,7 +235,7 @@ public class OgrenciEkle extends javax.swing.JInternalFrame {
 
         lblOgrenciBilgisi.setText("İşlem Bilgisi:");
         lblOgrenciBilgisi.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel2.add(lblOgrenciBilgisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 270, 30));
+        jPanel2.add(lblOgrenciBilgisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 270, 70));
 
         btnOgrencileriSil.setText("<html>Seçilen Öğrencileri Sil</html>");
         btnOgrencileriSil.addActionListener(new java.awt.event.ActionListener() {
@@ -240,9 +246,14 @@ public class OgrenciEkle extends javax.swing.JInternalFrame {
         jPanel2.add(btnOgrencileriSil, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 190, 30));
 
         btnOgrenciEkle.setText("Yeni Öğrencileri Ekle");
+        btnOgrenciEkle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOgrenciEkleActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnOgrenciEkle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 190, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 170));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 210));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -262,6 +273,7 @@ public class OgrenciEkle extends javax.swing.JInternalFrame {
 
     private void cbSiniflarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSiniflarActionPerformed
         // TODO add your handling code here:
+        
         TabloIslemleri.TabloTemizle(tblOgrenciler);
         //DefaultTableModel model= (DefaultTableModel) tblOgrenciler.getModel();
         //model.addRow(new Object[]{false,null,"",""});
@@ -303,10 +315,11 @@ public class OgrenciEkle extends javax.swing.JInternalFrame {
 
     private void tblOgrencilerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblOgrencilerKeyPressed
         // TODO add your handling code here:
+        
          if(evt.getKeyCode()==10)
         {
             DefaultTableModel model= (DefaultTableModel) tblOgrenciler.getModel();
-            model.addRow(new Object[]{false,-1," "," "});
+            model.addRow(new Object[]{false,""," "," "});
             
            
             
@@ -315,16 +328,125 @@ public class OgrenciEkle extends javax.swing.JInternalFrame {
 
     private void btnOgrencileriGuncelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOgrencileriGuncelleActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model= (DefaultTableModel) tblOgrenciler.getModel();
+        OgrencilerDAO islem=new OgrencilerDAO();
+        int sayac=0,hatali=0;
+        for (int i = 0; i < model.getRowCount(); i++) 
+        {
+            if((boolean)model.getValueAt(i, 0))
+            {
+                
+                boolean eslesme=false;
+                Ogrenciler o=new Ogrenciler();
+                Siniflar s=new Siniflar();
+                s.setSinifId(secilenSinif);
+                o.setSinif(s);
+                if(model.getValueAt(i, 1).toString().trim().isEmpty() ||
+                        model.getValueAt(i, 2).toString().trim().isEmpty() || 
+                        model.getValueAt(i, 2).toString().trim().isEmpty() 
+                  )
+                {
+
+                    hatali++;
+                    continue;
+                }
+                o.setOgrenciNo(Integer.parseInt(model.getValueAt(i, 1).toString().trim()));
+                o.setOgrenciAdi(model.getValueAt(i, 2).toString().trim().toUpperCase());
+                o.setOgrenciSoyadi(model.getValueAt(i, 3).toString().trim().toUpperCase());                
+                    if(islem.Guncelle(o)>0){sayac++;}
+                
+            }
+            
+        }
+        if(hatali>0)
+            lblOgrenciBilgisi.setText("<html>"+sayac+" sayıda seçilen öğrenci Güncellendi."+hatali+" sayıda seçilen öğrenci güncellenemedi(öğnrenci adı"
+                    + "soyadı ve numarası boş geçilemez.)</html>");        
+        else
+            lblOgrenciBilgisi.setText("<html>"+sayac+" sayıda seçilen öğrenci güncellendi.</html>");
+        TabloIslemleri.TabloTemizle(tblOgrenciler);
+        OgrencilerTablosuDoldur();
+        
     }//GEN-LAST:event_btnOgrencileriGuncelleActionPerformed
 
     private void btnOgrencileriSilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOgrencileriSilActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model= (DefaultTableModel) tblOgrenciler.getModel();
+        OgrencilerDAO islem=new OgrencilerDAO();
+        lblOgrenciBilgisi.setText("İşlem Bilgisi");
+        int sayac=0;
+        for (int i = 0; i < model.getRowCount(); i++) 
+        {
+            if((boolean)model.getValueAt(i, 0))
+            {
+                int no=Integer.parseInt(model.getValueAt(i, 1).toString().trim());
+                if(islem.Sil(no)>0)
+                {
+                    sayac++;
+                }
+                
+                
+            }
+        }
+        lblOgrenciBilgisi.setText("<html>İşlem Bilgisi"+sayac+" seçilen öğrenci silindi</html>");
+        TabloIslemleri.TabloTemizle(tblOgrenciler);
+        OgrencilerTablosuDoldur();
+        
     }//GEN-LAST:event_btnOgrencileriSilActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         // TODO add your handling code here:
         ProgramlarCbDoldur();
     }//GEN-LAST:event_formInternalFrameOpened
+
+    private void btnOgrenciEkleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOgrenciEkleActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model= (DefaultTableModel) tblOgrenciler.getModel();
+        OgrencilerDAO islem=new OgrencilerDAO();
+        int sayac=0,hatali=0;
+        for (int i = 0; i < model.getRowCount(); i++) 
+        {
+            boolean eslesme=false;
+            Ogrenciler o=new Ogrenciler();
+            Siniflar s=new Siniflar();
+            s.setSinifId(secilenSinif);
+            o.setSinif(s);
+            if(model.getValueAt(i, 1).toString().trim().isEmpty() ||
+                    model.getValueAt(i, 2).toString().trim().isEmpty() || 
+                    model.getValueAt(i, 2).toString().trim().isEmpty() 
+              )
+            {
+                
+                hatali++;
+                continue;
+            }
+            o.setOgrenciNo(Integer.parseInt(model.getValueAt(i, 1).toString().trim()));
+            o.setOgrenciAdi(model.getValueAt(i, 2).toString().trim().toUpperCase());
+            o.setOgrenciSoyadi(model.getValueAt(i, 3).toString().trim().toUpperCase());
+           
+            for (Ogrenciler ogr:ogrenciler) 
+            {
+                if(ogr.getOgrenciNo()==o.getOgrenciNo() )
+                {
+                    eslesme=true;
+                }                
+            }
+            if(!eslesme)
+            {
+                if(islem.Ekle(o)>0){sayac++;}
+            }
+            
+        }
+        if(hatali>0)
+            lblOgrenciBilgisi.setText("<html>"+sayac+" sayıda öğrenci tabloya eklendi."+hatali+" sayıda öğrenci tabloya eklenemedi(öğnrenci adı"
+                    + "soyadı ve numarası boş geçilemez.)</html>");        
+        else
+            lblOgrenciBilgisi.setText("<html>"+sayac+" sayıda öğrenci tabloya eklendi.</html>");
+        TabloIslemleri.TabloTemizle(tblOgrenciler);
+        OgrencilerTablosuDoldur();
+        
+        
+
+    }//GEN-LAST:event_btnOgrenciEkleActionPerformed
 
     /**
      * @param args the command line arguments

@@ -22,7 +22,10 @@ public class OgrencilerDAO extends DAO
 {
     private final String tumListeyiGetir= "select * from [programlar] as p inner join [siniflar] as s on p.[programId]=s.[programId]"
             + " inner join [ogrenciler] as o on s.[sinifId]=o.[sinifId] where s.[sinifId]=3 order by o.[ogrenciNo] asc";
-    private final String sinifOgrencileriniGetir="select * from [ogrenciler] where [sinifId]=? ";
+    private final String sinifOgrencileriniGetir="select * from [ogrenciler] where [sinifId]=? order by [ogrenciNo] asc";
+    private final String ekle="INSERT INTO [ogrenciler]([ogrenciNo],[ogrenciAdi],[ogrenciSoyadi],[sinifId]) VALUES(?,?,?,?)";
+    private final String sil = "DELETE FROM [ogrenciler] WHERE [ogrenciNo]=?";
+    private final String guncelle = "UPDATE [ogrenciler] SET [ogrenciAdi]=?, [ogrenciSoyadi]=? WHERE [ogrenciNo]=?";
     public List<Ogrenciler> TumListeyiGetir() 
         {
 		Connection conn = null;
@@ -114,5 +117,98 @@ public class OgrencilerDAO extends DAO
 		
 		return list;
     }
+    
+    public int Ekle(Ogrenciler ogrenci)
+        {
+           Connection conn = null;
+            PreparedStatement stmt = null;
+		
+		try 
+                {
+                    conn = getConnection();
+                    stmt = conn.prepareStatement(ekle);
+                    stmt.setInt(1, ogrenci.getOgrenciNo());
+                    stmt.setString(2, ogrenci.getOgrenciAdi());
+                    stmt.setString(3, ogrenci.getOgrenciSoyadi());
+                    stmt.setInt(4, ogrenci.getSinif().getSinifId());
+                    
+                        
+                    int result = stmt.executeUpdate();	
+                    return result;
+		}
+                catch (SQLException e) 
+                {
+			// e.printStackTrace();
+                    throw new RuntimeException(e);
+		} 
+                finally 
+                {
+                    close(stmt);
+                    close(conn);
+		}
+
+            
+        }
+    
+    public int Sil(int ogrenciNo)
+        {
+           Connection conn = null;
+            PreparedStatement stmt = null;
+		
+		try 
+                {
+                    conn = getConnection();
+                    stmt = conn.prepareStatement(sil);
+                    stmt.setInt(1, ogrenciNo);                 
+                    
+                        
+                    int result = stmt.executeUpdate();	
+                    return result;
+		}
+                catch (SQLException e) 
+                {
+			// e.printStackTrace();
+                    throw new RuntimeException(e);
+		} 
+                finally 
+                {
+                    close(stmt);
+                    close(conn);
+		}
+
+            
+        }
+    
+    public int Guncelle(Ogrenciler ogrenci)
+        {
+           Connection conn = null;
+            PreparedStatement stmt = null;
+		
+		try 
+                {
+                    conn = getConnection();
+                    stmt = conn.prepareStatement(guncelle);
+                    stmt.setInt(3, ogrenci.getOgrenciNo());
+                    stmt.setString(1, ogrenci.getOgrenciAdi());
+                    stmt.setString(2, ogrenci.getOgrenciSoyadi());
+                    //stmt.setInt(4, ogrenci.getSinif().getSinifId());
+                    
+                        
+                    int result = stmt.executeUpdate();	
+                    return result;
+		}
+                catch (SQLException e) 
+                {
+			// e.printStackTrace();
+                    throw new RuntimeException(e);
+		} 
+                finally 
+                {
+                    close(stmt);
+                    close(conn);
+		}
+
+            
+        }
     
 }
